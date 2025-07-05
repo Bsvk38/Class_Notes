@@ -286,6 +286,17 @@ sudo kubeadm token create --print-join-command 	# To generate New Token along wi
 kubeadm join 172.31.11.255:6443 --token b032hx.0y73mgwpnkfon2qy \
         --discovery-token-ca-cert-hash sha256:ea8f2ad90bd059c3c2d5eb252cb228d7234baa27f7f5b865967fbba9ed2390a1
 
+need to change master pvt ip, token access token
 
+✅ 2. To get the --discovery-token-ca-cert-hash:
+If you have lost it, you can regenerate it with:
+
+openssl x509 -pubkey -in /etc/kubernetes/pki/ca.crt | \
+openssl rsa -pubin -outform der 2>/dev/null | \
+sha256sum | awk '{print $1}'
+
+✅ 1. To list the existing tokens:
+
+kubeadm token list
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
